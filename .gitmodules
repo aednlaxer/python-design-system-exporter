@@ -1,0 +1,3 @@
+[submodule "python_sketch_api"]
+	path = python_sketch_api
+	url = git@github.com:aednlaxer/python_sketch_api.git

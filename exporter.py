@@ -72,8 +72,9 @@ def main():
 
                             if subLayer.style.borders is not None:
                                 for border in subLayer.style.borders:
-                                    style['border-color'] = colour(border.color)
-                                    style['border-thickness'] = border.thickness
+                                    if border.isEnabled:
+                                        style['border-color'] = colour(border.color)
+                                        style['border-thickness'] = border.thickness
 
                             style['shadows'] = shadows(subLayer.style.shadows)
 

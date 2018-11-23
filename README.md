@@ -5,7 +5,7 @@ A prototype of Sketch style exporter.
 Usage:
 
 ```bash
-./exporter.py file.sketch
+./exporter.py example.sketch
 ``` 
 
 prints a JSON like this:
@@ -40,4 +40,6 @@ prints a JSON like this:
 ]
 ```
 
-Requirements: check `req.txt` of [python_sketch_api](https://github.com/aednlaxer/python_sketch_api) module
+Supported Sketch format: Sketch 50+
+
+Requirements: `req.txt` of [python_sketch_api](https://github.com/aednlaxer/python_sketch_api) module

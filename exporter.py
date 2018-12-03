@@ -46,19 +46,14 @@ def shadows(shadowsList):
     return s
 
 
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: ./exporter.py file.sketch")
-        return
-
-    filename = sys.argv[1]
-    file = SketchFile.from_file(filename)
+def export(sketch_filename):
+    file = SketchFile.from_file(sketch_filename)
 
     for page in file.sketch_pages:
 
         # Typography page contains all text styles
         if page.name == "Typography":
-            styles = []
+            styles = {'text-styles': []}
 
             for layer in page.layers:
                 style = {}
@@ -86,12 +81,14 @@ def main():
                                 style['gravity'] = gravity(attr.attributes.paragraphStyle.alignment)
                                 style['text-color'] = colour(color)
 
-                        styles.append(style)
+                        styles['text-styles'].append(style)
 
-            print(json.dumps(styles, sort_keys=True, indent=4))
-
-            break
+            return styles
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) < 2:
+        print("Usage: ./exporter.py file.sketch")
+    else:
+        filename = sys.argv[1]
+        print(json.dumps(export(filename), sort_keys=True, indent=4))
